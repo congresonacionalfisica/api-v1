@@ -1,0 +1,590 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>CNF API</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all_nosearch.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo.png" class="logo" alt="Logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+        </div>
+      <div id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduccion" class="toc-h1 toc-link" data-title="introduccion">Introducción</a>
+          </li>
+          <li>
+            <a href="#autentificacion" class="toc-h1 toc-link" data-title="autentificacion">Autentificación</a>
+          </li>
+          <li>
+            <a href="#archivos-cnf" class="toc-h1 toc-link" data-title="archivos-cnf">Archivos CNF</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#obtener-todos-los-archivos" class="toc-h2 toc-link" data-title="obtener-todos-los-archivos">Obtener todos los archivos</a>
+                  </li>
+                  <li>
+                    <a href="#obtener-un-archivo-especifico" class="toc-h2 toc-link" data-title="obtener-un-archivo-especifico">Obtener un archivo específico</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#errores" class="toc-h1 toc-link" data-title="errores">Errores</a>
+          </li>
+      </div>
+        <ul class="toc-footer">
+            <li><a href='http://cnf.smf.mx/' target="_blank">Congreso Nacional de Física</a></li>
+            <li><a href='https://www.smf.mx' target="_blank">Sociedad Mexicana de Física</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduccion'>Introducción</h1>
+<p>Bienvenido a la API del Congreso Nacional de Física. Tú podrás usar nuestra API para acceder a los CNF API endpoints, donde podrás obtener información sobre los trabajos aprobados para su presentación en nuestro siguiente evento. Únicamente se encuentra habilitado el método <code>GET</code>.</p>
+
+<p>Puedes ver ejemplos de las peticiones en el área negra de la derecha.</p>
+
+<p>Plataforma creada y administrada por la Sociedad Mexicana de Física. Hecho en México.</p>
+<h1 id='autentificacion'>Autentificación</h1><pre class="highlight shell tab-shell"><code><span class="c"># La CNF API es abierta, por lo tanto no necesita ninguna autorización</span>
+curl <span class="s2">"http://cnf.smf.mx/api/v1/"</span>
+</code></pre>
+<p>CNF API se encuentra en modo de desarrollo por lo tanto actualmente no requiere ningun tipo de token para poder consultar la información.</p>
+<h1 id='archivos-cnf'>Archivos CNF</h1><h2 id='obtener-todos-los-archivos'>Obtener todos los archivos</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://cnf.smf.mx/api/v1/archivos/"</span>
+</code></pre>
+<blockquote>
+<p>Devuelve una lista de objetos JSON:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://cnf.smf.mx/archivos/40/"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"titulo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DESARROLLO DE UN SISTEMA DE CULTIVO AGRICOLA AUTOMATIZADO MEDIANTE MONITOREO DE VARIBLES HMI A TRAVES DE LA IRRIGACION"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"abstract"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Diseño, desarrollo e implementación de un sistema de control automático, en conjunto de su respectiva HMI para satisfacer las necesidades de cultivo inteligente para la producción en masa a través de control y monitoreo de variables."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ciencias de la Tierra"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"autor"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jose Yahir "</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manuel Ruiz"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"estudios"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maestría"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"institucion"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maria Graciela "</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hernndez y Orduña"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"estudios"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doctorado"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"institucion"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"presentacion_asignada"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Poster"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://cnf.smf.mx/archivos/68/"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"titulo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"La importancia del Códice “Cruz-Badiano”, las plantas medicinales nativas de México, y su estudio de contenidos radiológicos."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"abstract"</span><span class="p">:</span><span class="w"> </span><span class="s2">"En este trabajo se presenta el Códice Cruz-Badiano (1552) y su importancia a nivel internacional en el desarrollo del uso de las plantas medicinales nativas de México para la cura de diversas enfermedades y la producción de productos farmacéuticos, así como de esencias y saborizantes como es el caso de la Vainilla (Vanilla planifolia Andrews) (planta de origen mexicano). También se presentan algunas de las ilustraciones pintadas por los Tlacuilos (artistas nativos Mexicas), además de algunos espectros gamma, de los estudios realizados de los contenidos radiológicos en las plantas medicinales del Códice, y empleadas comúnmente hasta la fecha."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Física de Radiaciones"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"autor"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Guillermo Cirano"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Espinosa García"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"estudios"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doctorado"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"institucion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Universidad Nacional Autónoma de México"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"José Ignacio"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Golzarri y Moreno"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"estudios"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Licenciatura"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"institucion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Universidad Nacional Autónoma de México"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allan Canek"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chavarría Sánchez"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"estudios"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doctorado"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"institucion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Universidad Nacional Autónoma de México"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"presentacion_asignada"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Poster"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://cnf.smf.mx/archivos/620/"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"titulo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ESTUDIO COMPARATIVO ESTACIONAL EN UN MONITOREO ANUAL DE LAS VARIACIONES DE LA TEMPERATURA Y  LA  HUMEDAD EN UNA ZONA AL SUR DE MORELIA MICHOACÁN. "</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"abstract"</span><span class="p">:</span><span class="w"> </span><span class="s2">"En un trabajo previo [1] se presento un estudio de las variaciones de la temperatura y la humedad en un área del sur de Morelia Michoacán. Donde se reportaron solamente dos periodos de tiempo correspondientes a las estaciones de primavera y verano. En este trabajo se presentan los estudios correspondientes para los periodos estacionales de otoño y invierno para poder disponer de un monitoreo anual de las variaciones de la temperatura y humedad. Se presenta un análisis temporal, de espectros de Fourier, de mapas de retorno y de correlaciones, para cada periodo estacional. En base a estos análisis se propone un modelo semi-empírico para predecir las variaciones en el periodo anual analizado.  </span><span class="se">\r\n</span><span class="s2">1 C. H. Mendoza Pérez et al., LX Congreso Nacional de Física (2017).Trabajo M1A003."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ciencias de la Tierra"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"autor"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Misael "</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vieyra Ríos"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"estudios"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maestría"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"institucion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Universidad Michoacana de San Nicolás de Hidalgo"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"José "</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vega Cabrera"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"estudios"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maestría"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"institucion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Universidad Michoacana de San Nicolás de Hidalgo"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gabriel "</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Arroyo Correa"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"estudios"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maestría"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"institucion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Universidad Michoacana de San Nicolás de Hidalgo"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Carlos Heriberto "</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mendoza Pérez"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"estudios"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Licenciatura"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"institucion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Universidad Michoacana de San Nicolás de Hidalgo"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"presentacion_asignada"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Poster"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Este endpoint devuelve todos los archivos.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://cnf.smf.mx/api/v1/archivos</code></p>
+<h3 id='parametros-opcionales'>Parámetros opcionales</h3>
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Opción</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>area</td>
+<td>1</td>
+<td>Astrofísica</td>
+</tr>
+<tr>
+<td></td>
+<td>2</td>
+<td>Ciencias de la Tierra</td>
+</tr>
+<tr>
+<td></td>
+<td>3</td>
+<td>Dinámica de Fluidos</td>
+</tr>
+<tr>
+<td></td>
+<td>4</td>
+<td>Enseñanza</td>
+</tr>
+<tr>
+<td></td>
+<td>5</td>
+<td>Estado Sólido</td>
+</tr>
+<tr>
+<td></td>
+<td>6</td>
+<td>Física Atómica y Molecular</td>
+</tr>
+<tr>
+<td></td>
+<td>7</td>
+<td>Física de Plasmas</td>
+</tr>
+<tr>
+<td></td>
+<td>8</td>
+<td>Física de Radiaciones</td>
+</tr>
+<tr>
+<td></td>
+<td>9</td>
+<td>Física Estadística y Termodinámica</td>
+</tr>
+<tr>
+<td></td>
+<td>10</td>
+<td>Física Médica</td>
+</tr>
+<tr>
+<td></td>
+<td>11</td>
+<td>Física Nuclear</td>
+</tr>
+<tr>
+<td></td>
+<td>12</td>
+<td>Gravitación y Física Matemática</td>
+</tr>
+<tr>
+<td></td>
+<td>13</td>
+<td>Historia y Filosofía de la Física</td>
+</tr>
+<tr>
+<td></td>
+<td>14</td>
+<td>Información Cuántica</td>
+</tr>
+<tr>
+<td></td>
+<td>15</td>
+<td>Instrumentación</td>
+</tr>
+<tr>
+<td></td>
+<td>16</td>
+<td>Nanociencias y Nanotecnología</td>
+</tr>
+<tr>
+<td></td>
+<td>17</td>
+<td>Óptica</td>
+</tr>
+<tr>
+<td></td>
+<td>18</td>
+<td>Partículas y Campos</td>
+</tr>
+<tr>
+<td></td>
+<td>19</td>
+<td>Rayos Cósmicos</td>
+</tr>
+<tr>
+<td></td>
+<td>19</td>
+<td>Otro</td>
+</tr>
+<tr>
+<td>presentacion</td>
+<td>poster</td>
+<td>El archivo se presenta en mural</td>
+</tr>
+<tr>
+<td></td>
+<td>platica</td>
+<td>El archivo se presenta en oral</td>
+</tr>
+<tr>
+<td>titulo</td>
+<td><code>String</code></td>
+<td>Título del archivo</td>
+</tr>
+<tr>
+<td>autor</td>
+<td><code>String</code></td>
+<td>Nombre de alguno de los autores del archivo</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Nota — Algunos autores tiene el valor <code>null</code> en el campo <code>institución</code>
+</aside>
+
+<aside class="success">
+Recuerda — En caso de no encontrar un archivo que cumpla con los parámetros establecidos regresará una lista vacía.
+</aside>
+<h2 id='obtener-un-archivo-especifico'>Obtener un archivo específico</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://cnf.smf.mx/api/v1/archivos/866/"</span>
+</code></pre>
+<blockquote>
+<p>El comando anterior regresa el siguiente JSON:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://cnf.smf.mx/archivos/866/"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"titulo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dinámica poblacional de la interacción del árbol de la especie </span><span class="se">\\</span><span class="s2">textit{Vachellia cornigera}  y hormigas de la especie </span><span class="se">\\</span><span class="s2">textit{Pseudomyrmex ferrugineus} mediante un modelo de Lotka-Volterra"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"abstract"</span><span class="p">:</span><span class="w"> </span><span class="s2">"El mutualismo es la interacción biológica interespecífica mutuamente benéfica. Lo estudiamos en los árboles de la especie </span><span class="se">\\</span><span class="s2">textit{Vachellia cornigera} que acogen y alimentan a colonias de hormigas de la especie </span><span class="se">\\</span><span class="s2">textit{Pseudomyrmex ferrugineus}, las que defienden a los árboles de la depredación de otros organismos. En este trabajo modelamos el mutualismo mediante las ecuaciones diferenciales presa-depredador de Lotka-Volterra. Las poblaciones son consideradas biomasa que se conserva dentro de los alrededores del árbol. Se proponen parámetros de interacción dependientes de factores abióticos que se plantean como funciones de la tasa metabólica de los organismos. Agradecemos a los proyectos LANCAD-UNAM-DGTIC-276 y UNAM-DGAPA-PAPIIT IN116617."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ciencias de la Tierra"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"autor"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saúl Iván "</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hernández Hernández"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"estudios"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doctorado"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"institucion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UMDI-Juriquilla, Fac. de Ciencias UNAM"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aldo"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ledesma Durán"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"estudios"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doctorado"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"institucion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CFATA, UNAM campus Juriquilla"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Iván"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Santamaría Holek"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"estudios"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doctorado"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"institucion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UMDI-Juriquilla, Fac. de Ciencias UNAM"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Benjamín "</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tenopala Carmona"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"estudios"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Licenciatura"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"institucion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UMDI-Juriquilla, Fac. de Ciencias UNAM"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cassandra"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cruz Martínez"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"estudios"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Licenciatura"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"institucion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Universidad Autónoma de Querétaro"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"presentacion_asignada"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Poster"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Este endpoint devuelve un archivo específico.</p>
+
+<aside class="warning">En caso de que el ID del archivo no exista se devolverá un <code>Error 404</code>.</aside>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET http://cnf.smf.mx/api/v1/archivos/&lt;ID&gt;</code></p>
+<h3 id='parametros-de-la-url'>Parámetros de la URL</h3>
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>El ID del archivo a devolver</td>
+</tr>
+</tbody></table>
+<h1 id='errores'>Errores</h1>
+<aside class="notice">
+Se recomienda realizar las pruebas en Postman antes de integrarlas a su proyecto para verificar el correcto funcionamiento de las peticiones.
+</aside>
+
+<p>CNF API usa los siguientes códigos en caso de algún error:</p>
+
+<table><thead>
+<tr>
+<th>Código</th>
+<th>Significado</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request -- Petición inválida.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found -- El archivo específico no existe.</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests -- Demasiadas peticiones a la API.</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error -- Problema con el servidor.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable -- Servidor en mantenimiento.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
