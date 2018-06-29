@@ -45,7 +45,7 @@ curl "http://cnf.smf.mx/api/v1/archivos/"
 ```json
 [
   {
-    "url": "http://cnf.smf.mx/archivos/40/",
+    "pk": 40,
     "titulo": "DESARROLLO DE UN SISTEMA DE CULTIVO AGRICOLA AUTOMATIZADO MEDIANTE MONITOREO DE VARIBLES HMI A TRAVES DE LA IRRIGACION",
     "abstract": "Diseño, desarrollo e implementación de un sistema de control automático, en conjunto de su respectiva HMI para satisfacer las necesidades de cultivo inteligente para la producción en masa a través de control y monitoreo de variables.",
     "area": "Ciencias de la Tierra",
@@ -66,7 +66,7 @@ curl "http://cnf.smf.mx/api/v1/archivos/"
     "presentacion_asignada": "Poster"
   },
   {
-    "url": "http://cnf.smf.mx/archivos/68/",
+    "pk": 68,
     "titulo": "La importancia del Códice “Cruz-Badiano”, las plantas medicinales nativas de México, y su estudio de contenidos radiológicos.",
     "abstract": "En este trabajo se presenta el Códice Cruz-Badiano (1552) y su importancia a nivel internacional en el desarrollo del uso de las plantas medicinales nativas de México para la cura de diversas enfermedades y la producción de productos farmacéuticos, así como de esencias y saborizantes como es el caso de la Vainilla (Vanilla planifolia Andrews) (planta de origen mexicano). También se presentan algunas de las ilustraciones pintadas por los Tlacuilos (artistas nativos Mexicas), además de algunos espectros gamma, de los estudios realizados de los contenidos radiológicos en las plantas medicinales del Códice, y empleadas comúnmente hasta la fecha.",
     "area": "Física de Radiaciones",
@@ -93,7 +93,7 @@ curl "http://cnf.smf.mx/api/v1/archivos/"
     "presentacion_asignada": "Poster"
   },
   {
-    "url": "http://cnf.smf.mx/archivos/620/",
+    "pk": 620,
     "titulo": "ESTUDIO COMPARATIVO ESTACIONAL EN UN MONITOREO ANUAL DE LAS VARIACIONES DE LA TEMPERATURA Y  LA  HUMEDAD EN UNA ZONA AL SUR DE MORELIA MICHOACÁN. ",
     "abstract": "En un trabajo previo [1] se presento un estudio de las variaciones de la temperatura y la humedad en un área del sur de Morelia Michoacán. Donde se reportaron solamente dos periodos de tiempo correspondientes a las estaciones de primavera y verano. En este trabajo se presentan los estudios correspondientes para los periodos estacionales de otoño y invierno para poder disponer de un monitoreo anual de las variaciones de la temperatura y humedad. Se presenta un análisis temporal, de espectros de Fourier, de mapas de retorno y de correlaciones, para cada periodo estacional. En base a estos análisis se propone un modelo semi-empírico para predecir las variaciones en el periodo anual analizado.  \r\n1 C. H. Mendoza Pérez et al., LX Congreso Nacional de Física (2017).Trabajo M1A003.",
     "area": "Ciencias de la Tierra",
@@ -181,7 +181,7 @@ curl "http://cnf.smf.mx/api/v1/archivos/866/"
 
 ```json
 {
-  "url": "http://cnf.smf.mx/archivos/866/",
+  "pk": 866,
   "titulo": "Dinámica poblacional de la interacción del árbol de la especie \\textit{Vachellia cornigera}  y hormigas de la especie \\textit{Pseudomyrmex ferrugineus} mediante un modelo de Lotka-Volterra",
   "abstract": "El mutualismo es la interacción biológica interespecífica mutuamente benéfica. Lo estudiamos en los árboles de la especie \\textit{Vachellia cornigera} que acogen y alimentan a colonias de hormigas de la especie \\textit{Pseudomyrmex ferrugineus}, las que defienden a los árboles de la depredación de otros organismos. En este trabajo modelamos el mutualismo mediante las ecuaciones diferenciales presa-depredador de Lotka-Volterra. Las poblaciones son consideradas biomasa que se conserva dentro de los alrededores del árbol. Se proponen parámetros de interacción dependientes de factores abióticos que se plantean como funciones de la tasa metabólica de los organismos. Agradecemos a los proyectos LANCAD-UNAM-DGTIC-276 y UNAM-DGAPA-PAPIIT IN116617.",
   "area": "Ciencias de la Tierra",
